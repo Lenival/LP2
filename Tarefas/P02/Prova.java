@@ -8,6 +8,7 @@ public class Prova{
 		this.notaParte2 = notaParte2;
 	}
 	
+	// A nota total é dada pela soma da nota na parte 1 e 2
 	public double calcularNotaTotal(){
 		double notaTotal = notaParte1+notaParte2;
 		if (notaTotal > 10){

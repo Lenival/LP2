@@ -11,6 +11,10 @@ public class Turma{
 		this.alunos.add( new Aluno(notaProva1, notaProva2 ));
 	}
 	
+	public ArrayList<Aluno> getAlunos(){
+		return this.alunos;
+	}
+	
 	public double calcularMedia(){
 		double media = 0;
 		for (Aluno aluno : this.alunos){
