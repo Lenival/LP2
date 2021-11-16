@@ -1,70 +1,81 @@
+//package tarefa_02_LP2;
 import java.util.ArrayList;
 import java.util.HashMap;
-import oracle.javatools.util.MultiMap;
 
+public class BancoDados {
+	private ArrayList<Veiculo> veiculos = new ArrayList<Veiculo>();
+	
+	public void adicionarVeiculo(Veiculo v) {
+		this.veiculos.add(v);
+	}
+	
+	public void removerVeiculo(Veiculo v) {
+		this.veiculos.remove(veiculos.indexOf(v));
+	}
 
-public class BancoDados{
-	private ArrayList<Veiculo> veiculos;
-	
-	public BancoDados(){
-		this.veiculos = new ArrayList<Veiculo>();
+	public void exibirVeiculos() {
+		// TODO Auto-generated method stub
+		System.out.println("Os veículos cadastrados são:");
+		for(Veiculo v : veiculos)
+			System.out.println(v.getModelo());
+	}
+
+	public void exibirAlugados() {
+		// TODO Auto-generated method stub
+		for(Veiculo v : veiculos)
+			if (v.isAlugado())
+				System.out.println("O veiculo " + v.getModelo() + " está alugado por " + v.getValorAluguel()*v.getDiasAlugado());		
 	}
 	
-	// Adicionar veiculo
-	public void adicionarVeiculo(Veiculo veiculo){
-		this.veiculos.add(veiculo);
-	}
-	// Remover veiculo
-	public void removerVeiculo(Veiculo veiculo){
-		this.veiculos.remove(this.veiculos.indexOf(veiculo));
+	public void exibirDisponiveis() {
+		// TODO Auto-generated method stub
+		for(Veiculo v : veiculos)
+			if (!v.isAlugado())
+				System.out.println("O veiculo " + v.getModelo() + " está disponivel por " + v.getValorAluguel() + "/dia");		
 	}
 	
-	public void exibirVeiculosCadastrados(){
-		System.out.println("Veículos cadastrados");
-		for(Veiculo	 v : veiculos)
-				System.out.println(v.getClass().getName()+ " " + v.getModelo());
+	public void listarAluguelMaisAlto() {
+		double maior = 0;
+		for(Veiculo v : veiculos)
+			if(maior < v.getValorAluguel())
+				maior = v.getValorAluguel();
+		System.out.println("O aluguel mais alto é no valor de R$ "+maior);
 	}
-	
-	public void exibirVeiculosDisponiveis(){
-			System.out.println("Veículos disponíveis para aluguel");
-			for(Veiculo	 v : veiculos){
-				if (!(v.getAlugado()))
-					System.out.println(" Veículo: " + v.getModelo()+"\tValor de aluguel: " + v.getValorAluguel());
-			}
-	}
-	
-	public double obterMaiorAluguel(){
-		System.out.println("Veículos cadastrados");
-		double maiorAluguel = 0;
-		for(Veiculo	 v : veiculos){
-			if(maiorAluguel < v.getValorAluguel())
-				maiorAluguel = v.getValorAluguel();
-		}
-		return maiorAluguel;
-	}
-	
+
+	public void listarMarcaMaisComum() {
+		// TODO Auto-generated method stub
+		HashMap<String,Integer> marcaPorPresenca = new HashMap<String,Integer>();
+		HashMap<Integer,ArrayList<String>> presencaPorMarca = new HashMap<Integer,ArrayList<String>>();
+		ArrayList<String> listaMarca;
+		int maisPresente = 0;
 		
-	public void exibirMarcaMaisComum(){
-		HashMap<String, Integer> m = new HashMap<String, Integer>();
-		HashMap<Integer, ArrayList<String>> multiM = new HashMap<Integer, ArrayList<String>>();
-		System.out.println("Marcas mais comuns");
-		for(Veiculo	 v : veiculos){
-			if (m.containsKey(v.getMarca())){
-				m.put(v.getMarca(), m.get(v.getMarca()) + 1);
-			}else{
-				m.put(v.getMarca(), 1);
-			}
-		}
-		int maior=0;
-		for(Integer key : m.keys()){
-			if (multiM.containsKey(m.get(key))){
-				multiM.put(m.get, m.get(v.getMarca()) + 1);
-			}else{
-				m.put(v.getMarca(), 1);
+		for(Veiculo v : veiculos) {
+			if(marcaPorPresenca.containsKey(v.getMarca())) {
+				marcaPorPresenca.replace(v.getMarca(), 1+marcaPorPresenca.get(v.getMarca()));
+			}else {
+				marcaPorPresenca.put(v.getMarca(), 1);
 			}
 		}
 		
-		System.out.println(m.toString());
-		System.out.println(multiM.toString());
+		
+		for (HashMap.Entry<String,Integer> entry : marcaPorPresenca.entrySet()) {
+			String key = entry.getKey();
+			Integer val = entry.getValue();
+			if(presencaPorMarca.containsKey(val)) {
+				listaMarca = presencaPorMarca.get(val);
+				listaMarca.add(key);
+				presencaPorMarca.replace(val, listaMarca);
+			}else {
+				listaMarca = new ArrayList<String>();
+				listaMarca.add(key);
+				presencaPorMarca.put(val, listaMarca );
+			}
+			if(maisPresente < val)
+				maisPresente = val;
+		}
+		
+		System.out.println("A lista de marcas mais presentes é:\n"+presencaPorMarca.get(maisPresente).toString());
+		
 	}
+	
 }

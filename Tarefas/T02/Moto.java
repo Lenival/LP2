@@ -1,24 +1,30 @@
-public class Moto extends Veiculo{
-	private String tipoPartida;//(manual ou elétrica)
-	private int cilindradas;
-	
-	public Moto(String marca, String modelo, String placa, double valorAluguel, boolean alugado, String tipoPartida, int cilindradas){
-		super(marca, modelo, placa, valorAluguel, alugado);
-		this.tipoPartida = tipoPartida;
-		this.cilindradas = cilindradas;
+public class Moto extends Veiculo {
+
+	private int cilindrada;
+	private String partida;
+
+	public Moto(String marca, String modelo, String placa, String partida, int cilindrada, int valorAluguel) {
+		super(marca, modelo, placa, valorAluguel);
+		this.partida = partida;
+		this.cilindrada = cilindrada;
+		// TODO Auto-generated constructor stub
+	}
+
+	public int getCilindrada() {
+		return cilindrada;
+	}
+
+	public void setCilindrada(int cilindrada) {
+		this.cilindrada = cilindrada;
+	}
+
+	public String getPartida() {
+		return partida;
+	}
+
+	public void setPartida(String partida) {
+		this.partida = partida;
 	}
 	
-	public void setTipoPartida(String tipoPartida){
-		this.tipoPartida = tipoPartida;
-	}
-	public void setCilindradas(int cilindradas){
-		this.cilindradas = cilindradas;
-	}
 	
-	public String getTipoPartida(){
-		return this.tipoPartida;
-	}
-	public int getNumeroPortas(){
-		return this.cilindradas;
-	}
 }
