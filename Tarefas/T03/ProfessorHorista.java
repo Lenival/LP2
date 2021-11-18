@@ -1,4 +1,3 @@
-import java.lang.constant.Constable;
 import java.util.Date;
 
 public class ProfessorHorista extends Professor {

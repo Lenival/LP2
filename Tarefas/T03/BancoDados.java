@@ -1,7 +1,5 @@
-import java.util.ArrayList;
-import java.util.Date;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 
 public class BancoDados {
@@ -34,25 +32,50 @@ public class BancoDados {
 	}
 
 	public void informarMaisJovem()   throws ParseException {
-
-		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-		Professor professorTemp = new Professor("dummy", "0", formato.parse("01/01/1900"), 10000,
-				"Mestrado", "dummy", 0);
-		for (Professor a : professores)
-			if (professorTemp.getDataNascimento().before(a.getDataNascimento()))
-				professorTemp = a;
-		System.out.println("O professor mais jovem é " + professorTemp.getNome());
+		
+		ArrayList<Professor> maisJovens = new ArrayList<Professor>();
+		for (Professor a : professores) {
+			if (!maisJovens.isEmpty()) {
+				if ((maisJovens.get(0)).getDataNascimento().equals(a.getDataNascimento()) )
+					maisJovens.add(a);
+				if ((maisJovens.get(0)).getDataNascimento().before(a.getDataNascimento())) {
+					//professorTemp = a;
+					maisJovens = new ArrayList<Professor>();
+					maisJovens.add(a);
+				}
+			}else {
+				maisJovens = new ArrayList<Professor>();
+				maisJovens.add(a);
+			}
+		}
+		System.out.println("Os professores mais jovens são:");
+		for (Professor professor : maisJovens) {
+			System.out.println(professor.getNome());
+		}
 	}
 	
 	public void informarMaisAntigo()   throws ParseException {
-
-		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-		Professor professorTemp = new Professor("dummy", "0", formato.parse("01/01/2021"), 10000,
-				"Mestrado", "dummy", 0);
-		for (Professor a : professores)
-			if (professorTemp.getDataNascimento().after(a.getDataNascimento()))
-				professorTemp = a;
-		System.out.println("O professor mais jovem é " + professorTemp.getNome());
+		
+		ArrayList<Professor> maisAntigo = new ArrayList<Professor>();
+		for (Professor a : professores) {
+			if (!maisAntigo.isEmpty()) {
+				if ((maisAntigo.get(0)).getDataNascimento().equals(a.getDataNascimento()) )
+					maisAntigo.add(a);
+				if ((maisAntigo.get(0)).getDataNascimento().after(a.getDataNascimento())) {
+					//professorTemp = a;
+					maisAntigo = new ArrayList<Professor>();
+					maisAntigo.add(a);
+				}
+			}else {
+				maisAntigo = new ArrayList<Professor>();
+				maisAntigo.add(a);
+			}
+		}
+		System.out.println("Os professores mais antigos são:");
+		for (Professor professor : maisAntigo) {
+			System.out.println(professor.getNome());
+		}
+		
 	}
 	
 
