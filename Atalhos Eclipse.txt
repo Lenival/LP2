@@ -1,0 +1,27 @@
+Codificação
+Ctrl + n			: Criar novos ítens como classes e projetos
+Ctrl + Shift + o 	: Organizar imports
+Ctrl + Shift + ↓ 	: Duplicar linha abaixo
+Ctrl + Shift + ↑ 	: Duplicar linha acima
+Ctrl + 1			: Assistente de projeto (Criar classe, criar e dar assign em propriedades da classe dentro do construtor ...)
+F3					: Entra na classes
+Alt + Shift + r 	: Fazer refactoring em nomes de métodos e atributos
+Ctrl + 3 			: Atalho para a linha de comando do Eclipse
+Ctrl + Shift + t 	: Entrar em uma classe desejada
+Ctrl + Shift + f 	: Formata a identação do código (ou trecho) desejado
+Ctrl + /			: Comentário de linha
+Alt + ↑↓			: Mover linha selecionada
+Alt + Shift + m		: Criar método com trecho de código selecionado
+
+Navegação
+Ctrl + m			: Expandir/Reduzir visualização de uma view
+Ctrl + , e Ctrl + 	: Navegar em erros e avisos
+Ctrl + Shift + l	: Lista de atalhos disponíveis
+
+
+linhas de comando do eclipse
+ggas : Generate Getters and Setters
+gcuf : Generate Constructor Using Fields
+
+
+
