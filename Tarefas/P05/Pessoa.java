@@ -1,3 +1,4 @@
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Pessoa {
@@ -11,7 +12,8 @@ public class Pessoa {
 	}
 
 	public String toString() {
-		return "Nome: " + this.nome +"\nData de Nascimento: " + dataNascimento.getDate() + "/"+ (1+dataNascimento.getMonth()) + "/"+ (1900+dataNascimento.getYear());
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+		return "Nome: " + this.nome +"\nData de Nascimento: " + formatter.format(dataNascimento);
 	}
 	
 	public String getNome() {

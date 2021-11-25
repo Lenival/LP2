@@ -1,5 +1,7 @@
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.Date;
+import java.util.Locale;
 
 public class Homem extends PessoaIMC {
 
@@ -16,7 +18,7 @@ public class Homem extends PessoaIMC {
 	@Override
 	public String resultIMC() {
 		// TODO Auto-generated method stub
-		DecimalFormat df = new DecimalFormat("#.##");
+		DecimalFormat df = new DecimalFormat("0.##",DecimalFormatSymbols.getInstance(Locale.US));
 		double imc = calculaIMC();
 		if (imc < 20.7)
 			return df.format(imc) + " Abaixo do peso ideal";
